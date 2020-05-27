@@ -6,6 +6,7 @@ import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
 import API from './utils/api';
+import Player from './src/player/container/player';
 
 type Props = {};
 class App extends Component<Props> {
@@ -26,24 +27,7 @@ class App extends Component<Props> {
     return (
       <Home>
         <Header />
-        <View
-          style={{
-            flex: 1,
-            height: 100
-          }}
-        >
-          <Video
-            source={{ uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0
-            }}
-            resizeMode="contain"
-          />
-        </View>
+        <Player />
         <Text>Buscador</Text>
         <Text>categoria</Text>
         <CategoryList list={this.state.categoryList} />
