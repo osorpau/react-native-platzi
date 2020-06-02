@@ -10,7 +10,6 @@ import API from './utils/api';
 import Player from './src/player/container/player';
 import store from './src/redux/store';
 
-
 type Props = {};
 class App extends Component<Props> {
   state = {
@@ -18,12 +17,18 @@ class App extends Component<Props> {
     categoryList: [],
   };
   async componentDidMount() {
-    const movies = await API.getSuggestion(10);
-    const categories = await API.getMovies();
-    this.setState({
-      suggestionList: movies,
-      categoryList: categories,
-    });
+    const categoriesList = await API.getMovies();
+    store.dispatch({
+      type: 'SET_CATEGORY_LIST',
+      payload: { categoriesList }
+    })
+
+    const suggestionList = await API.getSuggestion(10);
+    store.dispatch({
+      type: 'SET_SUGGESTION_LIST',
+      payload: { suggestionList }
+    })
+
   }
   render() {
     return (

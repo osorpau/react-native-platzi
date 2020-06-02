@@ -7,7 +7,9 @@ import Category from '../components/category';
 import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
-  debugger
+  return {
+    list: state.categoriesList
+  }
 }
 class SuggestionList extends React.Component {
   keyExtractor = item => item.id.toString();
