@@ -8,15 +8,24 @@ import Suggestion from '../components/suggestion';
 
 function mapStateToProps(state) {
   return {
-    list: state.suggestionList
-  }
+    list: state.suggestionList,
+  };
 }
 class SuggestionList extends React.Component {
   keyExtractor = item => item.id.toString();
   renderEmpty = () => <Empty text="No hay sugerencias T_T" />;
   itemSeparator = () => <Separator />;
+  viewMovie = item => {
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: item,
+      },
+    });
+  };
   renderItem = ({ item }) => {
-    return <Suggestion {...item} />;
+    //en onPress si no pongo el arrow function base , la funcion viewMovie se llama directamente
+    return <Suggestion {...item} onPress={() => this.viewMovie(item)} />;
   };
   render() {
     return (
