@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Layout from '../components/movie-layout';
 import Player from '../../player/container/player';
 import Header from '../../sections/components/header';
 import Close from '../../sections/components/close';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Details from '../../videos/components/detaisl';
 
 class Movie extends Component {
@@ -20,7 +20,7 @@ class Movie extends Component {
       <Layout>
         <Header>
           <Close onPress={this.closeVideo} />
-        </Header>
+        </Header>        
         <Player />
         <Details {...this.props.movie} />
       </Layout>

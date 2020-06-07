@@ -8,6 +8,7 @@ import SuggestionList from './videos/containers/suggestion-list';
 import CategoryList from './videos/containers/category-list';
 import API from '../utils/api';
 import Movie from './screens/containers/movie';
+import Search from './sections/containers/search';
 
 class AppLayout extends Component {
   state = {
@@ -34,8 +35,7 @@ class AppLayout extends Component {
     return (
       <Home>
         <Header />
-        <Text>Buscador</Text>
-        <Text>categoria</Text>
+        <Search/>        
         <CategoryList list={this.state.categoryList} />
         <SuggestionList list={this.state.suggestionList} />
       </Home>
